@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmebctbik2uyo" path="res://assets/sprites/player_prototype/idle.png" id="2_psp7o"]
 [ext_resource type="Texture2D" uid="uid://ppthys5jk7th" path="res://assets/sprites/player_prototype/walk.png" id="3_wln50"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p2gul"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mnirw"]
 radius = 5.0
 height = 16.0
 
@@ -76,7 +76,7 @@ region = Rect2(64, 64, 32, 32)
 atlas = ExtResource("3_wln50")
 region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p2gul"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_psp7o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -155,19 +155,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player_test" type="Node2D" unique_id=206919069]
+[node name="player_test" type="CharacterBody2D" unique_id=2113074700]
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=1431544535]
-z_index = 5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1381101051]
+shape = SubResource("CapsuleShape2D_mnirw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=685246597]
-shape = SubResource("CapsuleShape2D_p2gul")
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=901226585]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1992197777]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=835601135]
-sprite_frames = SubResource("SpriteFrames_p2gul")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1281056155]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_psp7o")
 animation = &"idle_front"
 autoplay = "idle_front"
