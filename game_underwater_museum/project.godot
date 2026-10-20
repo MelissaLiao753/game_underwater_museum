@@ -16,7 +16,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="game_underwater_museum"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [rendering]
 
