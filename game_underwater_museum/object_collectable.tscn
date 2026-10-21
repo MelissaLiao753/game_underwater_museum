@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b345xgfvu8orn"]
+
+[ext_resource type="Texture2D" uid="uid://do341hi5aswgh" path="res://tileset/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png" id="1_aprr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynkgx"]
+size = Vector2(24, 41)
+
+[node name="object" type="Area2D" unique_id=1826424834]
+scale = Vector2(0.3727342, 0.3727342)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313510248]
+texture = ExtResource("1_aprr7")
+region_enabled = true
+region_rect = Rect2(410.005, 1153.595, 40, 45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=774460188]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_ynkgx")

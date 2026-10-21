@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://bra7ddgf4q8iq"]
 
-[ext_resource type="PackedScene" uid="uid://cj86wua8uh7rc" path="res://menu_main.tscn" id="1_hn12h"]
+[ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
-[ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_rka8t"]
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
 
-[node name="menu_main" parent="." unique_id=768519547 instance=ExtResource("1_hn12h")]
-
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
 
-[node name="enemy_test" parent="." unique_id=1131770542 instance=ExtResource("3_rka8t")]
+[node name="object" parent="." unique_id=1826424834 instance=ExtResource("2_hbghi")]
+position = Vector2(17, -11.999999)
