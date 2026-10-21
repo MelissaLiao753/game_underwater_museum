@@ -8,4 +8,4 @@
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
 
 [node name="object" parent="." unique_id=1826424834 instance=ExtResource("2_hbghi")]
-position = Vector2(17, -11.999999)
+position = Vector2(21, -9.536743e-07)
