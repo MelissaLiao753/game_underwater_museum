@@ -6,7 +6,20 @@
 [sub_resource type="GDScript" id="GDScript_hn12h"]
 script/source = "extends Area2D
 
-@onready var interactable: Area2D = $Interactable
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var interactable: Area2D = $interactable
+
+var is_interacted: bool = false
+
+func _ready() -> void:
+	interactable.interact = _on_interact
+	
+func _on_interact() -> void:
+	if not is_interacted:
+		is_interacted = true
+		interactable.is_interactable = false
+		print(\"Item Stolen!!\")
+		sprite_2d.visible = false
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynkgx"]
