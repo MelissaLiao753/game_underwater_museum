@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b345xgfvu8orn"]
+
+[ext_resource type="Texture2D" uid="uid://do341hi5aswgh" path="res://tileset/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png" id="1_aprr7"]
+[ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="2_78wcj"]
+
+[sub_resource type="GDScript" id="GDScript_hn12h"]
+script/source = "extends Area2D
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var interactable: Area2D = $interactable
+
+var is_interacted: bool = false
+
+func _ready() -> void:
+	interactable.interact = _on_interact
+	
+func _on_interact() -> void:
+	if not is_interacted:
+		is_interacted = true
+		interactable.is_interactable = false
+		print(\"Item Stolen!!\")
+		sprite_2d.visible = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynkgx"]
+size = Vector2(24, 41)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2gul"]
+
+[node name="object" type="Area2D" unique_id=1826424834]
+scale = Vector2(0.3727342, 0.3727342)
+script = SubResource("GDScript_hn12h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313510248]
+texture = ExtResource("1_aprr7")
+region_enabled = true
+region_rect = Rect2(410.005, 1153.595, 40, 45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=774460188]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_ynkgx")
+
+[node name="interactable" parent="." unique_id=646188620 instance=ExtResource("2_78wcj")]
+position = Vector2(0.99999994, -0.49999997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable" unique_id=1037357030]
+scale = Vector2(2.8733263, 2.8733263)
+shape = SubResource("CircleShape2D_p2gul")

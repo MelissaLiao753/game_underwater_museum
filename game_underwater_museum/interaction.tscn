@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ddhgoul5grm84"]
+
+[sub_resource type="GDScript" id="GDScript_ynkgx"]
+script/source = "extends Node2D
+
+var current_interactions:= []
+var can_interact := true
+#If the e key is pressed, and the object is interactable: set the object to interactable/non-interactable
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"interact\") and can_interact:
+		if current_interactions:
+			can_interact = false
+			var target = current_interactions[0]
+			if target and target.get(\"is_interactable\") == true:
+				can_interact = false
+				await target.interact.call()
+				can_interact = true
+				if target.is_interactable == false:
+					current_interactions.erase(target)
+			
+		
+
+func _process(delta: float) -> void:
+	if current_interactions and can_interact:
+		current_interactions.sort_custom(_sort_by_nearest)
+
+		
+func _sort_by_nearest(area1, area2):
+	var area1_dist = global_position.distance_to(area1.owner.global_position)
+	var area2_dist = global_position.distance_to(area2.owner.global_position)
+	return area1_dist < area2_dist
+	
+
+func _on_interact_range_area_entered(area: Area2D) -> void:
+	if \"is_interactable\" in area:
+		current_interactions.push_back(area)
+
+
+func _on_interact_range_area_exited(area: Area2D) -> void:
+	current_interactions.erase(area)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2gul"]
+radius = 7.0
+
+[node name="interaction" type="Node2D" unique_id=1833982683]
+script = SubResource("GDScript_ynkgx")
+
+[node name="interact_range" type="Area2D" parent="." unique_id=749626510]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact_range" unique_id=1915847321]
+shape = SubResource("CircleShape2D_p2gul")
+
+[connection signal="area_entered" from="interact_range" to="." method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="interact_range" to="." method="_on_interact_range_area_exited"]
