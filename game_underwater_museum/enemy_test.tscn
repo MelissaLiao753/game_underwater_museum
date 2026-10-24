@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dywrlp4mr501b" path="res://tileset/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Bob_run_16x16.png" id="2_c6iok"]
 [ext_resource type="PackedScene" uid="uid://c8e8cwcrg304p" path="res://killzone.tscn" id="3_c6iok"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5det1"]
 atlas = ExtResource("1_tegdf")
 region = Rect2(288, 0, 16, 32)
@@ -242,19 +244,15 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
-
 [node name="enemy" type="Node2D" unique_id=1131770542]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649446594]
-sprite_frames = SubResource("SpriteFrames_p2gul")
-animation = &"enemy_walk_right"
-autoplay = "enemy_idle"
-frame = 1
-frame_progress = 0.3375972
 
 [node name="killzone" parent="." unique_id=1891673327 instance=ExtResource("3_c6iok")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1570173308]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_n74wa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649446594]
+sprite_frames = SubResource("SpriteFrames_p2gul")
+animation = &"enemy_idle"
+autoplay = "enemy_idle"

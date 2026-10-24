@@ -191,6 +191,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=2113074700]
+collision_layer = 2
 script = SubResource("GDScript_wln50")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1381101051]
