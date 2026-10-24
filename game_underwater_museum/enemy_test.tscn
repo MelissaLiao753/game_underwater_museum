@@ -4,7 +4,32 @@
 [ext_resource type="Texture2D" uid="uid://dywrlp4mr501b" path="res://tileset/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Bob_run_16x16.png" id="2_c6iok"]
 [ext_resource type="PackedScene" uid="uid://c8e8cwcrg304p" path="res://killzone.tscn" id="3_c6iok"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
+[sub_resource type="GDScript" id="GDScript_hqtel"]
+script/source = "extends Node2D
+
+@onready var enemy: Node2D = $\".\"
+@onready var ray_cast_right: RayCast2D = $RayCast_Right
+@onready var ray_cast_left: RayCast2D = $RayCast_Left
+
+const SPEED = 60.0
+var direction = 1
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if direction:
+		if direction > 0:
+			enemy.flip_h = false
+		else:
+			enemy.flip_h = true
+				
+		if ray_cast_right.is_colliding():
+			direction = -1
+			
+		elif ray_cast_left.is_colliding():
+			direction = 1
+			
+	position.x += SPEED * delta * direction
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5det1"]
 atlas = ExtResource("1_tegdf")
@@ -244,7 +269,15 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
+
 [node name="enemy" type="Node2D" unique_id=1131770542]
+script = SubResource("GDScript_hqtel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649446594]
+sprite_frames = SubResource("SpriteFrames_p2gul")
+animation = &"enemy_idle"
+autoplay = "enemy_idle"
 
 [node name="killzone" parent="." unique_id=1891673327 instance=ExtResource("3_c6iok")]
 
@@ -252,7 +285,12 @@ animations = [{
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_n74wa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649446594]
-sprite_frames = SubResource("SpriteFrames_p2gul")
-animation = &"enemy_idle"
-autoplay = "enemy_idle"
+[node name="RayCast_Right" type="RayCast2D" parent="." unique_id=1161886404]
+position = Vector2(0, 5)
+rotation = -1.5707964
+target_position = Vector2(-6.993822e-07, 16)
+
+[node name="RayCast_Left" type="RayCast2D" parent="." unique_id=1683353179]
+position = Vector2(0, 5)
+rotation = 1.5707964
+target_position = Vector2(6.993822e-07, 16)
