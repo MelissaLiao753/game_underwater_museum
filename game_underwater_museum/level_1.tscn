@@ -7,7 +7,7 @@
 [node name="level_1" type="Node2D" unique_id=1151538460]
 
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
-position = Vector2(-15, -30)
+position = Vector2(-60, -5)
 
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
 
