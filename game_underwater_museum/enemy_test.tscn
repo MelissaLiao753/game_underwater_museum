@@ -5,12 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://c8e8cwcrg304p" path="res://killzone.tscn" id="3_c6iok"]
 
 [sub_resource type="GDScript" id="GDScript_hqtel"]
-script/source = "extends Node2D
+script/source = "extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast_right: RayCast2D = $RayCast_Right
-@onready var ray_cast_left: RayCast2D = $RayCast_Left
-@onready var ray_cast_up: RayCast2D = $RayCast_Up
 @onready var ray_cast_down: RayCast2D = $RayCast_Down
  
 enum state {horizontal, vertical}
@@ -20,34 +18,45 @@ enum state {horizontal, vertical}
 var direction: int = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if state_type == state.horizontal:
 		horizontal_movement(delta)
 	else: 
 		vertical_movement(delta)
-
+	move_and_slide()
 func horizontal_movement(delta: float) -> void:
 	animated_sprite_2d.flip_h = direction < 0
 	animated_sprite_2d.flip_v = false
 	
+	ray_cast_right.target_position.x = abs(ray_cast_right.target_position.x) * direction
+	#Wall detection
 	if ray_cast_right.is_colliding():
-		direction = -1
-	elif ray_cast_left.is_colliding():
-		direction = 1
+		direction *= -1
+		ray_cast_right.target_position.x = abs(ray_cast_right.target_position.x) * direction
+		ray_cast_right.force_raycast_update()
 	
-	position.x += SPEED * delta * direction
-
+	if is_on_wall():
+		direction *= -1
+		
+	velocity.x = SPEED * direction
+	velocity.y = 0
 func vertical_movement(delta: float) -> void:
 	animated_sprite_2d.flip_v = direction < 0
 	animated_sprite_2d.flip_h = false
-	
+	ray_cast_down.target_position.y = abs(ray_cast_down.target_position.y) * direction
 	if ray_cast_down.is_colliding():
-		direction = -1
-	elif ray_cast_up.is_colliding():
-		direction = 1
-	
-	position.y += SPEED * delta * direction
+		direction *= -1
+		ray_cast_down.target_position.y = abs(ray_cast_down.target_position.y) * direction
+		ray_cast_down.force_raycast_update()
+
+	if is_on_ceiling() or is_on_floor():
+		direction *= -1
+		
+	velocity.y = SPEED * direction
+	velocity.x = 0
 "
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynkgx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5det1"]
 atlas = ExtResource("1_tegdf")
@@ -289,9 +298,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
 
-[node name="enemy" type="Node2D" unique_id=1131770542]
+[node name="enemy" type="CharacterBody2D" unique_id=608018237]
+collision_layer = 4
+collision_mask = 9
 script = SubResource("GDScript_hqtel")
-state_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=476187039]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ynkgx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649446594]
 sprite_frames = SubResource("SpriteFrames_p2gul")
@@ -308,17 +322,13 @@ shape = SubResource("CapsuleShape2D_n74wa")
 position = Vector2(0, 5)
 rotation = -1.5707964
 target_position = Vector2(-6.993822e-07, 16)
-
-[node name="RayCast_Left" type="RayCast2D" parent="." unique_id=1683353179]
-position = Vector2(0, 5)
-rotation = 1.5707964
-target_position = Vector2(6.993822e-07, 16)
-
-[node name="RayCast_Up" type="RayCast2D" parent="." unique_id=608661375]
-position = Vector2(0, 5)
-rotation = 3.1415925
-target_position = Vector2(-6.993822e-07, 16)
+collision_mask = 9
+hit_from_inside = true
+collide_with_areas = true
 
 [node name="RayCast_Down" type="RayCast2D" parent="." unique_id=653245656]
 position = Vector2(0, 4)
 target_position = Vector2(-6.993822e-07, 16)
+collision_mask = 9
+hit_from_inside = true
+collide_with_areas = true

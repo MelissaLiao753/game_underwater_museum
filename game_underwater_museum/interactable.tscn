@@ -10,7 +10,7 @@ var interact: Callable = func():
 "
 
 [node name="interactable" type="Area2D" unique_id=646188620]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 8
+collision_mask = 2
 script = SubResource("GDScript_x3v40")
 interact_name = "Globe"

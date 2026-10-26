@@ -15,5 +15,5 @@ position = Vector2(-60, -5)
 position = Vector2(21, -9.536743e-07)
 
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
-position = Vector2(-95, -49)
+position = Vector2(-95.00001, -2)
 scale = Vector2(0.9577577, 0.9319017)

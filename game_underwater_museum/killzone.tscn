@@ -10,6 +10,7 @@ func _on_body_entered(body: Node2D) -> void:
 "
 
 [node name="killzone" type="Area2D" unique_id=1891673327]
+collision_layer = 16
 collision_mask = 2
 script = SubResource("GDScript_g4jet")
 
