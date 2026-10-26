@@ -2,8 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
+
+[node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
+position = Vector2(-60, -5)
 
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
 
@@ -11,5 +15,5 @@
 position = Vector2(21, -9.536743e-07)
 
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
-position = Vector2(-95, -49)
+position = Vector2(-95.00001, -2)
 scale = Vector2(0.9577577, 0.9319017)
