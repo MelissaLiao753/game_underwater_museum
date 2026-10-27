@@ -316,6 +316,7 @@ autoplay = "enemy_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1570173308]
 position = Vector2(0, 4)
+scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_n74wa")
 
 [node name="RayCast_Right" type="RayCast2D" parent="." unique_id=1161886404]
