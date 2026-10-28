@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7c8gtk6ilriw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md6se"]
+bg_color = Color(0.15870929, 0.19215941, 0.23072872, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psuxp"]
+bg_color = Color(0.52298343, 0.8375332, 0.95497686, 1)
+
+[node name="HUD" type="Control" unique_id=1469245116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1529837609]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+scale = Vector2(50.56, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_md6se")
+theme_override_styles/fill = SubResource("StyleBoxFlat_psuxp")
+value = 80.0
+rounded = true
+show_percentage = false
