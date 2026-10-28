@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="2_78wcj"]
 
 [sub_resource type="GDScript" id="GDScript_hn12h"]
-script/source = "extends Area2D
+script/source = "extends StaticBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var interactable: Area2D = $interactable
@@ -31,7 +31,7 @@ size = Vector2(24, 41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2gul"]
 
-[node name="object" type="Area2D" unique_id=1826424834]
+[node name="object" type="StaticBody2D" unique_id=1954964439]
 scale = Vector2(0.3727342, 0.3727342)
 collision_layer = 8
 collision_mask = 2
