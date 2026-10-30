@@ -18,6 +18,10 @@ config/name="game_underwater_museum"
 run/main_scene="uid://bra7ddgf4q8iq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
+[autoload]
+
+EventBus="*uid://cn06v8r1m5mbc"
+
 [input]
 
 move_left={

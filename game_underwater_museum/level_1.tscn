@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://bra7ddgf4q8iq"]
 
+[ext_resource type="PackedScene" uid="uid://7c8gtk6ilriw" path="res://hud.tscn" id="1_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
+
+[node name="HUD" parent="." unique_id=1469245116 instance=ExtResource("1_ihfcg")]
+offset_left = -136.0
+offset_top = -62.0
+offset_right = -136.0
+offset_bottom = -62.0
 
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(-60, -5)

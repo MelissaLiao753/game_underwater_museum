@@ -1,11 +1,29 @@
 [gd_scene format=3 uid="uid://7c8gtk6ilriw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md6se"]
-bg_color = Color(0.15870929, 0.19215941, 0.23072872, 1)
-border_blend = true
+[ext_resource type="Texture2D" uid="uid://cl4ntg2m5g6dq" path="res://assets/UI/kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large_m.svg" id="1_37p78"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psuxp"]
-bg_color = Color(0.52298343, 0.8375332, 0.95497686, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2snw"]
+texture = ExtResource("1_37p78")
+
+[sub_resource type="GDScript" id="GDScript_37p78"]
+script/source = "extends ProgressBar
+@onready var progress_bar: ProgressBar = $\".\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	progress_bar.value = 0
+	EventBus.item_collected.connect(_on_item_collected)
+
+func _on_item_collected(value: int) -> void:
+	progress_bar.value += value
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="HUD" type="Control" unique_id=1469245116]
 layout_mode = 3
@@ -15,13 +33,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1529837609]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1762366968]
 layout_mode = 0
-offset_right = 4.0
+offset_right = 249.0
 offset_bottom = 27.0
-scale = Vector2(50.56, 1)
-theme_override_styles/background = SubResource("StyleBoxFlat_md6se")
-theme_override_styles/fill = SubResource("StyleBoxFlat_psuxp")
-value = 80.0
-rounded = true
+theme_override_styles/fill = SubResource("StyleBoxTexture_n2snw")
+value = 100.0
 show_percentage = false
+script = SubResource("GDScript_37p78")
