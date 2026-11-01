@@ -45,17 +45,3 @@ position = Vector2(21, -9.536743e-07)
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
 position = Vector2(-95.00001, -2)
 scale = Vector2(0.9577577, 0.9319017)
-
-[node name="Timer" type="Timer" parent="." unique_id=999185222]
-wait_time = 360.0
-one_shot = true
-autostart = true
-
-[node name="time_label" type="Label" parent="." unique_id=1122637779]
-offset_left = 36.0
-offset_top = -64.0
-offset_right = 118.0
-offset_bottom = -41.0
-text = "TIME LEFT:"
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
