@@ -5,13 +5,34 @@
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
 
+[sub_resource type="GDScript" id="GDScript_p2gul"]
+script/source = "extends Node2D
+
+@onready var timer: Timer = $Timer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	print(\"Time's Up! You didn't escape in time.\")
+	get_tree().reload_current_scene
+"
+
 [node name="level_1" type="Node2D" unique_id=1151538460]
+script = SubResource("GDScript_p2gul")
 
 [node name="HUD" parent="." unique_id=1469245116 instance=ExtResource("1_ihfcg")]
-offset_left = -136.0
-offset_top = -62.0
-offset_right = -136.0
-offset_bottom = -62.0
+offset_left = -142.0
+offset_top = -63.0
+offset_right = -142.0
+offset_bottom = -63.0
 
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(-60, -5)
@@ -24,3 +45,17 @@ position = Vector2(21, -9.536743e-07)
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
 position = Vector2(-95.00001, -2)
 scale = Vector2(0.9577577, 0.9319017)
+
+[node name="Timer" type="Timer" parent="." unique_id=999185222]
+wait_time = 360.0
+one_shot = true
+autostart = true
+
+[node name="time_label" type="Label" parent="." unique_id=1122637779]
+offset_left = 36.0
+offset_top = -64.0
+offset_right = 118.0
+offset_bottom = -41.0
+text = "TIME LEFT:"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -35,8 +35,8 @@ grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1762366968]
 layout_mode = 0
-offset_right = 249.0
-offset_bottom = 27.0
+offset_right = 175.22221
+offset_bottom = 19.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_n2snw")
 value = 100.0
 show_percentage = false
