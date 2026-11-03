@@ -7,6 +7,7 @@ script/source = "extends Area2D
 
 var interact: Callable = func():
 	pass
+	
 "
 
 [node name="interactable" type="Area2D" unique_id=646188620]

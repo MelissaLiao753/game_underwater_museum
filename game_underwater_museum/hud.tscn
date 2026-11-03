@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://7c8gtk6ilriw"]
+
+[ext_resource type="Texture2D" uid="uid://cl4ntg2m5g6dq" path="res://assets/UI/kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large_m.svg" id="1_37p78"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2snw"]
+texture = ExtResource("1_37p78")
+
+[sub_resource type="GDScript" id="GDScript_37p78"]
+script/source = "extends ProgressBar
+@onready var progress_bar: ProgressBar = $\".\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	progress_bar.value = 0
+	EventBus.item_collected.connect(_on_item_collected)
+
+func _on_item_collected(value: int) -> void:
+	progress_bar.value += value
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="HUD" type="Control" unique_id=1469245116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1762366968]
+layout_mode = 0
+offset_right = 175.22221
+offset_bottom = 19.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_n2snw")
+value = 100.0
+show_percentage = false
+script = SubResource("GDScript_37p78")

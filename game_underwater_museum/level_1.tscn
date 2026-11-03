@@ -1,10 +1,38 @@
 [gd_scene format=3 uid="uid://bra7ddgf4q8iq"]
 
+[ext_resource type="PackedScene" uid="uid://7c8gtk6ilriw" path="res://hud.tscn" id="1_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
 
+[sub_resource type="GDScript" id="GDScript_p2gul"]
+script/source = "extends Node2D
+
+@onready var timer: Timer = $Timer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	print(\"Time's Up! You didn't escape in time.\")
+	get_tree().reload_current_scene
+"
+
 [node name="level_1" type="Node2D" unique_id=1151538460]
+script = SubResource("GDScript_p2gul")
+
+[node name="HUD" parent="." unique_id=1469245116 instance=ExtResource("1_ihfcg")]
+offset_left = -142.0
+offset_top = -63.0
+offset_right = -142.0
+offset_bottom = -63.0
 
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(-60, -5)
