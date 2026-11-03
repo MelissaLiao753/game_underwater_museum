@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	else: 
 		vertical_movement(delta)
 	move_and_slide()
-func horizontal_movement(delta: float) -> void:
+func horizontal_movement(_delta: float) -> void:
 	animated_sprite_2d.flip_h = direction < 0
 	animated_sprite_2d.flip_v = false
 	
@@ -40,7 +40,7 @@ func horizontal_movement(delta: float) -> void:
 		
 	velocity.x = SPEED * direction
 	velocity.y = 0
-func vertical_movement(delta: float) -> void:
+func vertical_movement(_delta: float) -> void:
 	animated_sprite_2d.flip_v = direction < 0
 	animated_sprite_2d.flip_h = false
 	ray_cast_down.target_position.y = abs(ray_cast_down.target_position.y) * direction
