@@ -4,4 +4,4 @@ func _ready() -> void:
 	
 	var player = player_scene.instantiate()
 	add_child(player)
-	player.global_position = $"spawn point"
+	
