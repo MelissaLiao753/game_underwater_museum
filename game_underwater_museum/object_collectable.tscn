@@ -32,6 +32,7 @@ size = Vector2(24, 41)
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2gul"]
 
 [node name="object" type="Area2D" unique_id=1826424834]
+z_index = 1
 scale = Vector2(0.3727342, 0.3727342)
 collision_layer = 8
 collision_mask = 2

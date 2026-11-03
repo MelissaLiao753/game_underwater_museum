@@ -3,17 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://bl37dpf62yw22" path="res://tilemap.tscn" id="4_ihfcg"]
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
 
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
-position = Vector2(-60, -5)
+position = Vector2(280, 267)
 
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
+position = Vector2(635, 335)
 
 [node name="object" parent="." unique_id=1826424834 instance=ExtResource("2_hbghi")]
-position = Vector2(21, -9.536743e-07)
+position = Vector2(289.99997, 216.99998)
 
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
-position = Vector2(-95.00001, -2)
+position = Vector2(447, 239)
 scale = Vector2(0.9577577, 0.9319017)
+
+[node name="world" parent="." unique_id=340825920 instance=ExtResource("4_ihfcg")]
