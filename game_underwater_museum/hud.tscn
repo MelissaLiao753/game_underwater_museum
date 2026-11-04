@@ -6,17 +6,21 @@ border_color = Color(0.15957081, 0.3707296, 0.52579373, 1)
 
 [sub_resource type="GDScript" id="GDScript_md6se"]
 script/source = "extends ProgressBar
+@onready var progress_bar: ProgressBar = $\".\"
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	progress_bar.value = 0
+	EventBus.item_collected.connect(_on_item_collected)
+
+func _on_item_collected(value: int) -> void:
+	progress_bar.value += value
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
 "
 
 [node name="HUD" type="Control" unique_id=1838991309]
@@ -29,8 +33,10 @@ grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1557925946]
 layout_mode = 0
-offset_right = 202.0
-offset_bottom = 27.0
+offset_left = 53.0
+offset_top = 27.0
+offset_right = 709.0189
+offset_bottom = 93.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ynkgx")
 value = 50.0
 show_percentage = false

@@ -7,7 +7,7 @@ class_name collectible_object
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var is_interacted: bool = false
-
+@export var item_value: int = 15
 func _ready() -> void:
 	interactable.interact = _on_interact
 	
@@ -16,4 +16,5 @@ func _on_interact() -> void:
 		is_interacted = true
 		interactable.is_interactable = false
 		print("Item Stolen!!")
+		EventBus.item_collected.emit(item_value)
 		queue_free()

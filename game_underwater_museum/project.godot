@@ -19,6 +19,10 @@ run/main_scene="uid://bra7ddgf4q8iq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EventBus="*uid://cn06v8r1m5mbc"
+
 [input]
 
 move_left={
@@ -56,6 +60,7 @@ interact={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="collectibles"
 
 [rendering]
 
