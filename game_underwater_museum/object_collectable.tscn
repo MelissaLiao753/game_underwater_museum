@@ -44,12 +44,10 @@ region_rect = Rect2(410.005, 1153.59, 40, 45)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -0.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ynkgx")
 
 [node name="interactable" parent="." instance=ExtResource("2_78wcj")]
 position = Vector2(1, -0.5)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactable"]
 scale = Vector2(2.87333, 2.87333)

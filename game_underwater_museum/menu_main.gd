@@ -12,3 +12,9 @@ func _on_options_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 	
+func _on_AudioStreamPlayer_finished():
+	$AudioStreamPlayer.play() 
+
+func _on_Stop_Music_pressed():
+	$AudioStreamPlayer.stop()
+	
