@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0h3y06axtici"]
+
+[ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="1_pgbs4"]
+[ext_resource type="Texture2D" uid="uid://cok7udkq466dy" path="res://assets/self_made_assets/item_nautilus_shell_practice.png" id="2_pgbs4"]
+
+[sub_resource type="GDScript" id="GDScript_p2gul"]
+script/source = "extends collectible_object
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwk0u"]
+size = Vector2(21, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bb8al"]
+radius = 6.980124
+
+[node name="object_shell" type="Area2D" unique_id=1412008988]
+z_index = 1
+collision_layer = 8
+collision_mask = 2
+script = SubResource("GDScript_p2gul")
+
+[node name="ObjectClamPearl" type="Sprite2D" parent="." unique_id=1136507611]
+position = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1643918603]
+position = Vector2(0.5, -1)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_pwk0u")
+
+[node name="interactable" parent="." unique_id=646188620 instance=ExtResource("1_pgbs4")]
+position = Vector2(0.99999994, -0.49999997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable" unique_id=833541625]
+scale = Vector2(2.8733263, 2.8733263)
+shape = SubResource("CircleShape2D_bb8al")
+
+[node name="ItemNautilusShellPractice" type="Sprite2D" parent="." unique_id=168251871]
+texture = ExtResource("2_pgbs4")

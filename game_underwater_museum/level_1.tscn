@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bra7ddgf4q8iq"]
 
+[ext_resource type="PackedScene" uid="uid://d0h3y06axtici" path="res://object_shell.tscn" id="1_5hph3"]
+[ext_resource type="PackedScene" uid="uid://bkbf2y41uwg7i" path="res://object_clam.tscn" id="1_rka8t"]
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
@@ -7,17 +9,31 @@
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
 
+[node name="object_shell" parent="." unique_id=1412008988 instance=ExtResource("1_5hph3")]
+position = Vector2(361, 5)
+
+[node name="object_clam" parent="." unique_id=523062638 instance=ExtResource("1_rka8t")]
+position = Vector2(189, 9)
+scale = Vector2(0.73421705, 0.73421705)
+
 [node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
-position = Vector2(289, 133)
+position = Vector2(290, 76)
+
+[node name="enemy3" parent="." unique_id=608018237 instance=ExtResource("3_hn12h")]
+position = Vector2(167, 60)
+
+[node name="enemy2" parent="." unique_id=203574813 instance=ExtResource("3_hn12h")]
+position = Vector2(258, 92)
+state_type = 1
 
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
-position = Vector2(308, 196)
+position = Vector2(236, 129)
 
 [node name="object" parent="." unique_id=1826424834 instance=ExtResource("2_hbghi")]
-position = Vector2(467.99997, 178.99998)
+position = Vector2(394, 124)
 
 [node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
-position = Vector2(336, 82)
-scale = Vector2(0.9577577, 0.9319017)
+position = Vector2(297, 54.999996)
+scale = Vector2(0.6062691, 0.589902)
 
 [node name="world" parent="." unique_id=340825920 instance=ExtResource("4_ihfcg")]

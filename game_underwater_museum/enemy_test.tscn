@@ -42,7 +42,7 @@ func horizontal_movement(_delta: float) -> void:
 	velocity.y = 0
 func vertical_movement(_delta: float) -> void:
 	animated_sprite_2d.flip_v = direction < 0
-	animated_sprite_2d.flip_h = false
+	animated_sprite_2d.flip_v = false
 	ray_cast_down.target_position.y = abs(ray_cast_down.target_position.y) * direction
 	if ray_cast_down.is_colliding():
 		direction *= -1
