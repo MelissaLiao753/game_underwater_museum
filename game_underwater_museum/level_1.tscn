@@ -8,6 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://bl37dpf62yw22" path="res://tilemap.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://7c8gtk6ilriw" path="res://hud.tscn" id="7_j7kpp"]
 
+[sub_resource type="GDScript" id="GDScript_gn4v8"]
+script/source = "extends Timer
+@onready var timer: Timer = $\".\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	wait_time = 180.0
+	start()
+	
+
+func _on_timeout() -> void:
+	print(\"You ran out of time!!\")
+	get_tree().reload_current_scene()
+	
+"
+
 [node name="level_1" type="Node2D" unique_id=1151538460]
 
 [node name="enemies" type="Node" parent="." unique_id=1391321882]
@@ -48,7 +65,6 @@ position = Vector2(236, 129)
 [node name="world" parent="." unique_id=340825920 instance=ExtResource("4_ihfcg")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2101334712]
-visible = false
 
 [node name="HUD" parent="UI" unique_id=1838991309 instance=ExtResource("7_j7kpp")]
 z_index = 10
@@ -59,3 +75,9 @@ offset_bottom = -411.2996
 scale = Vector2(0.6800155, 0.6800155)
 
 [node name="Timer" type="Timer" parent="." unique_id=698287650]
+wait_time = 10.0
+one_shot = true
+autostart = true
+script = SubResource("GDScript_gn4v8")
+
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

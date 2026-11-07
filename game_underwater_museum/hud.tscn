@@ -1,5 +1,23 @@
 [gd_scene format=3 uid="uid://7c8gtk6ilriw"]
 
+[ext_resource type="Texture2D" uid="uid://uacu0wyj58bv" path="res://assets/self_made_assets/hud_timer.png" id="1_37p78"]
+[ext_resource type="FontFile" uid="uid://c0udlrmuadkt6" path="res://assets/fonts/PixelOperator8.ttf" id="2_64ctp"]
+
+[sub_resource type="GDScript" id="GDScript_p2gul"]
+script/source = "extends Control
+@onready var time_label: Label = $timer_texture/time_label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynkgx"]
 bg_color = Color(0.51004565, 0.81675214, 0.8624028, 1)
 border_color = Color(0.15957081, 0.3707296, 0.52579373, 1)
@@ -23,6 +41,10 @@ func _process(delta: float) -> void:
 	pass
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2gul"]
+atlas = ExtResource("1_37p78")
+region = Rect2(0, 0, 32, 32)
+
 [node name="HUD" type="Control" unique_id=1838991309]
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_p2gul")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1557925946]
 layout_mode = 0
@@ -41,3 +64,26 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ynkgx")
 value = 50.0
 show_percentage = false
 script = SubResource("GDScript_md6se")
+
+[node name="timer_texture" type="TextureRect" parent="." unique_id=362507150]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 4.0
+offset_right = 783.14514
+offset_bottom = 67.14514
+scale = Vector2(1.8845471, 1.8845471)
+texture = SubResource("AtlasTexture_p2gul")
+expand_mode = 1
+
+[node name="time_label" type="Label" parent="timer_texture" unique_id=1544920556]
+layout_mode = 0
+offset_left = 63.675777
+offset_top = 12.735155
+offset_right = 199.67578
+offset_bottom = 49.735153
+theme_override_colors/font_color = Color(0.8039216, 0.8862745, 0.89411765, 1)
+theme_override_colors/font_outline_color = Color(0.06666667, 0.1254902, 0.24313726, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 36
+text = ":180"
