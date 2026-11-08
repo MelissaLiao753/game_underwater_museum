@@ -5,17 +5,30 @@
 
 [sub_resource type="GDScript" id="GDScript_p2gul"]
 script/source = "extends Control
-@onready var time_label: Label = $timer_texture/time_label
 
+signal timer_expired
+@onready var timer: Timer = $Timer
+@onready var time_label: Label = $Timer/time_label
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	if not is_instance_valid(timer) or not timer.is_inside_tree():
+		return
+
+	if timer.time_left > 0:
+		time_label.text = str(ceil(timer.time_left))
+	else:
+		time_label.text = \"0\"
+
+func _on_timer_timeout():
+	timer_expired.emit()
+	time_label.text = \"0\"
+		
+
+		
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynkgx"]
@@ -41,9 +54,86 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2gul"]
+[sub_resource type="GDScript" id="GDScript_64ctp"]
+script/source = "extends Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	wait_time = 30.0
+	one_shot = true
+	start()
+	
+
+func _on_timeout() -> void:
+	print(\"You ran out of time!!\")
+	get_tree().reload_current_scene()
+	
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64ctp"]
 atlas = ExtResource("1_37p78")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sq4i"]
+atlas = ExtResource("1_37p78")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_640wx"]
+atlas = ExtResource("1_37p78")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2258"]
+atlas = ExtResource("1_37p78")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xsix"]
+atlas = ExtResource("1_37p78")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rftc2"]
+atlas = ExtResource("1_37p78")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61f8s"]
+atlas = ExtResource("1_37p78")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g10ll"]
+atlas = ExtResource("1_37p78")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2gul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64ctp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sq4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_640wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2258")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xsix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rftc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61f8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g10ll")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="Control" unique_id=1838991309]
 layout_mode = 3
@@ -65,25 +155,25 @@ value = 50.0
 show_percentage = false
 script = SubResource("GDScript_md6se")
 
-[node name="timer_texture" type="TextureRect" parent="." unique_id=362507150]
-layout_mode = 0
-offset_left = 720.0
-offset_top = 4.0
-offset_right = 783.14514
-offset_bottom = 67.14514
-scale = Vector2(1.8845471, 1.8845471)
-texture = SubResource("AtlasTexture_p2gul")
-expand_mode = 1
+[node name="Timer" type="Timer" parent="." unique_id=1877535214]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = SubResource("GDScript_64ctp")
 
-[node name="time_label" type="Label" parent="timer_texture" unique_id=1544920556]
-layout_mode = 0
-offset_left = 63.675777
-offset_top = 12.735155
-offset_right = 199.67578
-offset_bottom = 49.735153
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timer" unique_id=2059714385]
+position = Vector2(789, 59)
+scale = Vector2(4.0312505, 3.447781)
+sprite_frames = SubResource("SpriteFrames_p2gul")
+
+[node name="time_label" type="Label" parent="Timer" unique_id=1544920556]
+offset_left = 854.0
+offset_top = 27.0
+offset_right = 1020.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(0.8039216, 0.8862745, 0.89411765, 1)
 theme_override_colors/font_outline_color = Color(0.06666667, 0.1254902, 0.24313726, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_64ctp")
-theme_override_font_sizes/font_size = 36
-text = ":180"
+theme_override_font_sizes/font_size = 70
+text = ":30"

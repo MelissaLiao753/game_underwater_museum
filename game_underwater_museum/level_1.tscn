@@ -2,30 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://d0h3y06axtici" path="res://object_shell.tscn" id="1_5hph3"]
 [ext_resource type="PackedScene" uid="uid://bkbf2y41uwg7i" path="res://object_clam.tscn" id="1_rka8t"]
+[ext_resource type="PackedScene" uid="uid://dp37vgx8ccsra" path="res://object_jellyfish_tank.tscn" id="2_bjebc"]
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
 [ext_resource type="PackedScene" uid="uid://bl37dpf62yw22" path="res://tilemap.tscn" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://7c8gtk6ilriw" path="res://hud.tscn" id="7_j7kpp"]
 
-[sub_resource type="GDScript" id="GDScript_gn4v8"]
-script/source = "extends Timer
-@onready var timer: Timer = $\".\"
+[sub_resource type="GDScript" id="GDScript_j7kpp"]
+script/source = "extends Node
+@onready var hud: Control = $\"../UI/HUD\"
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	wait_time = 180.0
-	start()
-	
+	hud.timer_expired.connect(_on_player_time_out)
 
-func _on_timeout() -> void:
+func _on_player_time_out() -> void:
 	print(\"You ran out of time!!\")
-	get_tree().reload_current_scene()
+	reset_player()
 	
+func reset_player() -> void:
+	get_tree().reload_current_scene()
+	pass
 "
 
 [node name="level_1" type="Node2D" unique_id=1151538460]
+
+[node name="game_manager" type="Node" parent="." unique_id=837358078]
+script = SubResource("GDScript_j7kpp")
 
 [node name="enemies" type="Node" parent="." unique_id=1391321882]
 
@@ -39,23 +44,28 @@ state_type = 1
 [node name="enemy" parent="enemies" unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(290, 76)
 
-[node name="Node" type="Node" parent="enemies" unique_id=1069666000]
+[node name="objects" type="Node" parent="enemies" unique_id=1069666000]
 
-[node name="object" parent="enemies/Node" unique_id=1826424834 instance=ExtResource("2_hbghi")]
+[node name="object_jellyfish_tank" parent="enemies/objects" unique_id=1456139684 instance=ExtResource("2_bjebc")]
+z_index = 1
+position = Vector2(431.00003, 48)
+scale = Vector2(0.8547895, 0.8547895)
+
+[node name="object" parent="enemies/objects" unique_id=1826424834 instance=ExtResource("2_hbghi")]
 position = Vector2(394, 124)
 
-[node name="object2" parent="enemies/Node" unique_id=1204598880 instance=ExtResource("2_hbghi")]
+[node name="object2" parent="enemies/objects" unique_id=1204598880 instance=ExtResource("2_hbghi")]
 position = Vector2(297, 54.999996)
 scale = Vector2(0.6062691, 0.589902)
 
-[node name="object_shell" parent="enemies/Node" unique_id=1412008988 instance=ExtResource("1_5hph3")]
+[node name="object_shell" parent="enemies/objects" unique_id=1412008988 instance=ExtResource("1_5hph3")]
 position = Vector2(361, 5)
 
-[node name="object_clam" parent="enemies/Node" unique_id=523062638 instance=ExtResource("1_rka8t")]
+[node name="object_clam" parent="enemies/objects" unique_id=523062638 instance=ExtResource("1_rka8t")]
 position = Vector2(189, 9)
 scale = Vector2(0.73421705, 0.73421705)
 
-[node name="object_clam2" parent="enemies/Node" unique_id=1865626402 instance=ExtResource("1_rka8t")]
+[node name="object_clam2" parent="enemies/objects" unique_id=1865626402 instance=ExtResource("1_rka8t")]
 position = Vector2(226, 164)
 scale = Vector2(0.53907466, 0.53907466)
 
@@ -73,11 +83,3 @@ offset_top = -3.000001
 offset_right = -743.7418
 offset_bottom = -411.2996
 scale = Vector2(0.6800155, 0.6800155)
-
-[node name="Timer" type="Timer" parent="." unique_id=698287650]
-wait_time = 10.0
-one_shot = true
-autostart = true
-script = SubResource("GDScript_gn4v8")
-
-[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

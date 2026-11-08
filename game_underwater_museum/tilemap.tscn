@@ -7641,6 +7641,8 @@ texture = ExtResource("3_qdsee")
 86:111/0 = 0
 87:111/0 = 0
 33:81/0 = 0
+114:110/0 = 0
+110:70/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_x6r68"]
 physics_layer_0/collision_layer = 1
