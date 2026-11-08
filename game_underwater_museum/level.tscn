@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://bl37dpf62yw22"]
+[gd_scene load_steps=12 format=4 uid="uid://bl37dpf62yw22"]
 
 [ext_resource type="Texture2D" uid="uid://hnlm5reju8ql" path="res://tileset/Walls.png" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://djptcu0sdgyrl" path="res://level.gd" id="1_f2txt"]
 [ext_resource type="Texture2D" uid="uid://dvj4afg02soxj" path="res://tileset/interior.png" id="2_epypp"]
 [ext_resource type="Script" uid="uid://liotomoqgji2" path="res://escape_area.gd" id="3_oi3di"]
 [ext_resource type="Script" uid="uid://cojcj82htimbq" path="res://spawn_point.gd" id="4_1ainy"]
+[ext_resource type="AudioStream" uid="uid://cns7dx0xsiiax" path="res://assets/music/level_background_music.mp3" id="6_1ainy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0kgh"]
 texture = ExtResource("1_0e48y")
@@ -7585,5 +7586,11 @@ script = ExtResource("3_oi3di")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Escape area"]
 position = Vector2(-335.5, 594)
 shape = SubResource("RectangleShape2D_0b4ue")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1ainy")
+volume_db = -50.102
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="Escape area" to="Escape area" method="_on_body_entered"]
