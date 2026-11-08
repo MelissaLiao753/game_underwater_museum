@@ -34,15 +34,27 @@ script = SubResource("GDScript_j7kpp")
 
 [node name="enemies" type="Node" parent="." unique_id=1391321882]
 
-[node name="enemy3" parent="enemies" unique_id=608018237 instance=ExtResource("3_hn12h")]
+[node name="enemy5" parent="enemies" unique_id=608018237 instance=ExtResource("3_hn12h")]
+position = Vector2(340, 18)
+state_type = 1
+SPEED = 80.0
+
+[node name="enemy4" parent="enemies" unique_id=119925268 instance=ExtResource("3_hn12h")]
+position = Vector2(366, 140)
+state_type = 1
+SPEED = 80.0
+
+[node name="enemy3" parent="enemies" unique_id=1983838125 instance=ExtResource("3_hn12h")]
 position = Vector2(167, 60)
 
 [node name="enemy2" parent="enemies" unique_id=203574813 instance=ExtResource("3_hn12h")]
 position = Vector2(258, 92)
 state_type = 1
+SPEED = 180.0
 
 [node name="enemy" parent="enemies" unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(290, 76)
+SPEED = 200.0
 
 [node name="objects" type="Node" parent="enemies" unique_id=1069666000]
 
