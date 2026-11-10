@@ -1,45 +1,16 @@
 [gd_scene format=3 uid="uid://7c8gtk6ilriw"]
 
-[ext_resource type="Texture2D" uid="uid://uacu0wyj58bv" path="res://assets/self_made_assets/hud_timer.png" id="1_37p78"]
-[ext_resource type="FontFile" uid="uid://c0udlrmuadkt6" path="res://assets/fonts/PixelOperator8.ttf" id="2_64ctp"]
+[ext_resource type="Texture2D" uid="uid://cl4ntg2m5g6dq" path="res://assets/UI/kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large_m.svg" id="1_37p78"]
 
-[sub_resource type="GDScript" id="GDScript_p2gul"]
-script/source = "extends Control
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2snw"]
+texture = ExtResource("1_37p78")
 
-signal timer_expired
-@onready var timer: Timer = $Timer
-@onready var time_label: Label = $Timer/time_label
-
-func _ready() -> void:
-	timer.timeout.connect(_on_timer_timeout)
-	timer.start()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if not is_instance_valid(timer) or not timer.is_inside_tree():
-		return
-
-	if timer.time_left > 0:
-		time_label.text = str(ceil(timer.time_left))
-	else:
-		time_label.text = \"0\"
-
-func _on_timer_timeout():
-	timer_expired.emit()
-	time_label.text = \"0\"
-		
-
-		
-"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynkgx"]
-bg_color = Color(0.51004565, 0.81675214, 0.8624028, 1)
-border_color = Color(0.15957081, 0.3707296, 0.52579373, 1)
-
-[sub_resource type="GDScript" id="GDScript_md6se"]
+[sub_resource type="GDScript" id="GDScript_37p78"]
 script/source = "extends ProgressBar
 @onready var progress_bar: ProgressBar = $\".\"
 
 
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 	progress_bar.value = 0
@@ -54,127 +25,19 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="GDScript" id="GDScript_64ctp"]
-script/source = "extends Timer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	wait_time = 30.0
-	one_shot = true
-	start()
-	
-
-func _on_timeout() -> void:
-	print(\"You ran out of time!!\")
-	get_tree().reload_current_scene()
-	
-"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_64ctp"]
-atlas = ExtResource("1_37p78")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sq4i"]
-atlas = ExtResource("1_37p78")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_640wx"]
-atlas = ExtResource("1_37p78")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2258"]
-atlas = ExtResource("1_37p78")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xsix"]
-atlas = ExtResource("1_37p78")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rftc2"]
-atlas = ExtResource("1_37p78")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_61f8s"]
-atlas = ExtResource("1_37p78")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g10ll"]
-atlas = ExtResource("1_37p78")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p2gul"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_64ctp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8sq4i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_640wx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2258")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xsix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rftc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_61f8s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g10ll")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="HUD" type="Control" unique_id=1838991309]
+[node name="HUD" type="Control" unique_id=1469245116]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_p2gul")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1557925946]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1762366968]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 27.0
-offset_right = 709.0189
-offset_bottom = 93.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_ynkgx")
-value = 50.0
+offset_right = 175.22221
+offset_bottom = 19.0
+theme_override_styles/fill = SubResource("StyleBoxTexture_n2snw")
+value = 100.0
 show_percentage = false
-script = SubResource("GDScript_md6se")
-
-[node name="Timer" type="Timer" parent="." unique_id=1877535214]
-wait_time = 30.0
-one_shot = true
-autostart = true
-script = SubResource("GDScript_64ctp")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timer" unique_id=2059714385]
-position = Vector2(803, 55.999996)
-scale = Vector2(3.078124, 2.6326067)
-sprite_frames = SubResource("SpriteFrames_p2gul")
-autoplay = "default"
-
-[node name="time_label" type="Label" parent="Timer" unique_id=1544920556]
-offset_left = 891.0
-offset_top = 28.0
-offset_right = 1057.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.8039216, 0.8862745, 0.89411765, 1)
-theme_override_colors/font_outline_color = Color(0.06666667, 0.1254902, 0.24313726, 1)
-theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("2_64ctp")
-theme_override_font_sizes/font_size = 60
-text = ":30"
+script = SubResource("GDScript_37p78")
