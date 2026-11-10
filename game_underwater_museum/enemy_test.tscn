@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	else: 
 		vertical_movement(delta)
 	move_and_slide()
-func horizontal_movement(delta: float) -> void:
+func horizontal_movement(_delta: float) -> void:
 	animated_sprite_2d.flip_h = direction < 0
 	animated_sprite_2d.flip_v = false
 	
@@ -40,9 +40,9 @@ func horizontal_movement(delta: float) -> void:
 		
 	velocity.x = SPEED * direction
 	velocity.y = 0
-func vertical_movement(delta: float) -> void:
+func vertical_movement(_delta: float) -> void:
 	animated_sprite_2d.flip_v = direction < 0
-	animated_sprite_2d.flip_h = false
+	animated_sprite_2d.flip_v = false
 	ray_cast_down.target_position.y = abs(ray_cast_down.target_position.y) * direction
 	if ray_cast_down.is_colliding():
 		direction *= -1
@@ -299,6 +299,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
 
 [node name="enemy" type="CharacterBody2D" unique_id=608018237]
+z_index = 1
 collision_layer = 4
 collision_mask = 9
 script = SubResource("GDScript_hqtel")

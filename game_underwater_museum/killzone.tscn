@@ -4,9 +4,9 @@
 script/source = "extends Area2D
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	pass # Replace with function body.
-	get_tree().reload_current_scene()
+	get_tree().reload_current_scene.call_deferred()
 "
 
 [node name="killzone" type="Area2D" unique_id=1891673327]
