@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b345xgfvu8orn"]
 
+[ext_resource type="Script" uid="uid://c7y25og5poqp3" path="res://collectible_object.gd" id="1_331as"]
 [ext_resource type="Texture2D" uid="uid://do341hi5aswgh" path="res://tileset/Modern_Interiors_Free_v2.2/Modern tiles_Free/Interiors_free/32x32/Interiors_free_32x32.png" id="1_aprr7"]
 [ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="2_78wcj"]
 
@@ -34,12 +35,13 @@ func _on_interact() -> void:
 size = Vector2(24, 41)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2gul"]
+radius = 12.725216
 
 [node name="object" type="StaticBody2D" unique_id=1954964439]
 scale = Vector2(0.3727342, 0.3727342)
 collision_layer = 8
 collision_mask = 2
-script = SubResource("GDScript_hn12h")
+script = ExtResource("1_331as")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313510248]
 texture = ExtResource("1_aprr7")

@@ -4,6 +4,26 @@
 [ext_resource type="PackedScene" uid="uid://b345xgfvu8orn" path="res://object_collectable.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://cydwvsd1ow4o2" path="res://player.tscn" id="2_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://dtrp1gcf2hifv" path="res://enemy_test.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://bl37dpf62yw22" path="res://tilemap.tscn" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://7c8gtk6ilriw" path="res://hud.tscn" id="7_j7kpp"]
+
+[sub_resource type="GDScript" id="GDScript_j7kpp"]
+script/source = "extends Node
+@onready var hud: Control = $\"../UI/HUD\"
+
+
+
+func _ready() -> void:
+	hud.timer_expired.connect(_on_player_time_out)
+
+func _on_player_time_out() -> void:
+	print(\"You ran out of time!!\")
+	reset_player()
+	
+func reset_player() -> void:
+	get_tree().reload_current_scene()
+	pass
+"
 
 [sub_resource type="GDScript" id="GDScript_p2gul"]
 script/source = "extends Node2D
@@ -34,14 +54,68 @@ offset_top = -63.0
 offset_right = -142.0
 offset_bottom = -63.0
 
-[node name="enemy" parent="." unique_id=1131770542 instance=ExtResource("3_hn12h")]
-position = Vector2(-60, -5)
+[node name="game_manager" type="Node" parent="." unique_id=837358078]
+script = SubResource("GDScript_j7kpp")
+
+[node name="enemies" type="Node" parent="." unique_id=1391321882]
+
+[node name="enemy5" parent="enemies" unique_id=608018237 instance=ExtResource("3_hn12h")]
+position = Vector2(340, 18)
+state_type = 1
+SPEED = 80.0
+
+[node name="enemy4" parent="enemies" unique_id=119925268 instance=ExtResource("3_hn12h")]
+position = Vector2(366, 140)
+state_type = 1
+SPEED = 80.0
+
+[node name="enemy3" parent="enemies" unique_id=1983838125 instance=ExtResource("3_hn12h")]
+position = Vector2(167, 60)
+
+[node name="enemy2" parent="enemies" unique_id=203574813 instance=ExtResource("3_hn12h")]
+position = Vector2(258, 92)
+state_type = 1
+SPEED = 180.0
+
+[node name="enemy" parent="enemies" unique_id=1131770542 instance=ExtResource("3_hn12h")]
+position = Vector2(290, 76)
+SPEED = 200.0
+
+[node name="objects" type="Node" parent="enemies" unique_id=1069666000]
+
+[node name="object_jellyfish_tank" parent="enemies/objects" unique_id=1456139684 instance=ExtResource("2_bjebc")]
+z_index = 1
+position = Vector2(431.00003, 48)
+scale = Vector2(0.8547895, 0.8547895)
+
+[node name="object" parent="enemies/objects" unique_id=1826424834 instance=ExtResource("2_hbghi")]
+position = Vector2(394, 124)
+
+[node name="object2" parent="enemies/objects" unique_id=1204598880 instance=ExtResource("2_hbghi")]
+position = Vector2(297, 54.999996)
+scale = Vector2(0.6062691, 0.589902)
+
+[node name="object_shell" parent="enemies/objects" unique_id=1412008988 instance=ExtResource("1_5hph3")]
+position = Vector2(361, 5)
+
+[node name="object_clam" parent="enemies/objects" unique_id=523062638 instance=ExtResource("1_rka8t")]
+position = Vector2(189, 9)
+scale = Vector2(0.73421705, 0.73421705)
+
+[node name="object_clam2" parent="enemies/objects" unique_id=1865626402 instance=ExtResource("1_rka8t")]
+position = Vector2(226, 164)
+scale = Vector2(0.53907466, 0.53907466)
 
 [node name="player_test" parent="." unique_id=206919069 instance=ExtResource("2_ihfcg")]
+position = Vector2(236, 129)
 
-[node name="object" parent="." unique_id=1826424834 instance=ExtResource("2_hbghi")]
-position = Vector2(21, -9.536743e-07)
+[node name="world" parent="." unique_id=340825920 instance=ExtResource("4_ihfcg")]
 
-[node name="object2" parent="." unique_id=1204598880 instance=ExtResource("2_hbghi")]
-position = Vector2(-95.00001, -2)
-scale = Vector2(0.9577577, 0.9319017)
+[node name="UI" type="CanvasLayer" parent="." unique_id=2101334712]
+
+[node name="HUD" parent="UI" unique_id=1838991309 instance=ExtResource("7_j7kpp")]
+z_index = 10
+offset_top = 5.0
+offset_right = -468.19208
+offset_bottom = -445.94568
+scale = Vector2(0.82929873, 0.82929873)

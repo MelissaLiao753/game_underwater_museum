@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dp37vgx8ccsra"]
+
+[ext_resource type="Texture2D" uid="uid://cmcoiwsu2yph5" path="res://assets/self_made_assets/item_jellyfish.png" id="1_bly4s"]
+[ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="2_bs5jc"]
+
+[sub_resource type="GDScript" id="GDScript_bly4s"]
+script/source = "extends collectible_object
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3voen"]
+size = Vector2(61, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_edyjy"]
+radius = 13.9222355
+
+[node name="object_jellyfish_tank" type="Area2D" unique_id=1456139684]
+script = SubResource("GDScript_bly4s")
+
+[node name="ItemJellyfish" type="Sprite2D" parent="." unique_id=2034703495]
+texture = ExtResource("1_bly4s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2038096594]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507671494]
+position = Vector2(0.5000003, -2.5)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_3voen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1356948821]
+position = Vector2(1.0000005, -5)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_3voen")
+
+[node name="interactable" parent="." unique_id=646188620 instance=ExtResource("2_bs5jc")]
+position = Vector2(0.99999994, -0.49999997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable" unique_id=830464077]
+position = Vector2(-1, -1.5000002)
+scale = Vector2(2.8733263, 2.8733263)
+shape = SubResource("CircleShape2D_edyjy")

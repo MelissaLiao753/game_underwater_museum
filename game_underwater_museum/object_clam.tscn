@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bkbf2y41uwg7i"]
+
+[ext_resource type="Texture2D" uid="uid://pu1022vanev2" path="res://assets/self_made_assets/object_clam_pearl.png" id="1_abxhs"]
+[ext_resource type="PackedScene" uid="uid://djeitmgiv0j8t" path="res://interactable.tscn" id="2_h7532"]
+
+[sub_resource type="GDScript" id="GDScript_jvdkf"]
+script/source = "extends collectible_object
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cv83f"]
+size = Vector2(29, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iydns"]
+radius = 12.725216
+
+[node name="object_clam" type="Area2D" unique_id=523062638]
+z_index = 1
+collision_layer = 8
+collision_mask = 2
+script = SubResource("GDScript_jvdkf")
+
+[node name="ObjectClamPearl" type="Sprite2D" parent="." unique_id=1065785841]
+position = Vector2(1, 1)
+texture = ExtResource("1_abxhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2121971594]
+position = Vector2(0.5, 0.49999988)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_cv83f")
+
+[node name="interactable" parent="." unique_id=646188620 instance=ExtResource("2_h7532")]
+position = Vector2(0.99999994, -0.49999997)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable" unique_id=445035361]
+scale = Vector2(2.8733263, 2.8733263)
+shape = SubResource("CircleShape2D_iydns")
