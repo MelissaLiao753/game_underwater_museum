@@ -162,18 +162,19 @@ autostart = true
 script = SubResource("GDScript_64ctp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Timer" unique_id=2059714385]
-position = Vector2(789, 59)
-scale = Vector2(4.0312505, 3.447781)
+position = Vector2(803, 55.999996)
+scale = Vector2(3.078124, 2.6326067)
 sprite_frames = SubResource("SpriteFrames_p2gul")
+autoplay = "default"
 
 [node name="time_label" type="Label" parent="Timer" unique_id=1544920556]
-offset_left = 854.0
-offset_top = 27.0
-offset_right = 1020.0
-offset_bottom = 98.0
+offset_left = 891.0
+offset_top = 28.0
+offset_right = 1057.0
+offset_bottom = 99.0
 theme_override_colors/font_color = Color(0.8039216, 0.8862745, 0.89411765, 1)
 theme_override_colors/font_outline_color = Color(0.06666667, 0.1254902, 0.24313726, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_64ctp")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 60
 text = ":30"
