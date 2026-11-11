@@ -57,6 +57,8 @@ func vertical_movement(_delta: float) -> void:
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynkgx"]
+radius = 9.0
+height = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5det1"]
 atlas = ExtResource("1_tegdf")
@@ -297,6 +299,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n74wa"]
+radius = 8.333333
+height = 25.0
 
 [node name="enemy" type="CharacterBody2D" unique_id=608018237]
 z_index = 1

@@ -37,31 +37,32 @@ script = SubResource("GDScript_j7kpp")
 [node name="enemy5" parent="enemies" unique_id=608018237 instance=ExtResource("3_hn12h")]
 position = Vector2(340, 18)
 state_type = 1
-SPEED = 80.0
+SPEED = 100.0
 
 [node name="enemy4" parent="enemies" unique_id=119925268 instance=ExtResource("3_hn12h")]
 position = Vector2(366, 140)
 state_type = 1
-SPEED = 80.0
+SPEED = 100.0
 
 [node name="enemy3" parent="enemies" unique_id=1983838125 instance=ExtResource("3_hn12h")]
 position = Vector2(167, 60)
+SPEED = 80.0
 
 [node name="enemy2" parent="enemies" unique_id=203574813 instance=ExtResource("3_hn12h")]
 position = Vector2(258, 92)
 state_type = 1
-SPEED = 180.0
+SPEED = 200.0
 
 [node name="enemy" parent="enemies" unique_id=1131770542 instance=ExtResource("3_hn12h")]
 position = Vector2(290, 76)
-SPEED = 200.0
+SPEED = 220.0
 
 [node name="objects" type="Node" parent="enemies" unique_id=1069666000]
 
 [node name="object_jellyfish_tank" parent="enemies/objects" unique_id=1456139684 instance=ExtResource("2_bjebc")]
 z_index = 1
-position = Vector2(431.00003, 48)
-scale = Vector2(0.8547895, 0.8547895)
+position = Vector2(433, 48)
+scale = Vector2(0.59339345, 0.59339345)
 
 [node name="object" parent="enemies/objects" unique_id=1826424834 instance=ExtResource("2_hbghi")]
 position = Vector2(394, 124)
