@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckjuvup6u3vjj"]
+
+[ext_resource type="Texture2D" uid="uid://cdph3x7j0lss6" path="res://assets/backgrounds/menu_background.jpg" id="1_oqkmi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qebxn"]
+texture = ExtResource("1_oqkmi")
+modulate_color = Color(0.843184, 0.843184, 0.843184, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_f37s4"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kot8c"]
+bg_color = Color(0.823025, 0.798921, 0.794578, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Panel" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1149.0
+offset_bottom = 646.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qebxn")
+
+[node name="Sart Game" type="Button" parent="Background"]
+offset_left = 453.0
+offset_top = 448.0
+offset_right = 647.0
+offset_bottom = 497.0
+theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
+theme_override_fonts/font = SubResource("FontVariation_f37s4")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_kot8c")
+text = "Go back
+"
