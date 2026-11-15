@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cns7dx0xsiiax" path="res://assets/music/level_background_music.mp3" id="6_1ainy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l0kgh"]
-texture = ExtResource("2_ape6d")
+texture = ExtResource("1_0e48y")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0

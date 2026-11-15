@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckjuvup6u3vjj"]
+
+[ext_resource type="Texture2D" uid="uid://cdph3x7j0lss6" path="res://assets/backgrounds/menu_background.jpg" id="1_4o8m3"]
+[ext_resource type="Script" uid="uid://b0ia42tr28wqm" path="res://instructions.gd" id="1_w0orv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qebxn"]
+texture = ExtResource("1_4o8m3")
+modulate_color = Color(0.843184, 0.843184, 0.843184, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_f37s4"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kot8c"]
+bg_color = Color(0.823025, 0.798921, 0.794578, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[sub_resource type="FontVariation" id="FontVariation_lkydg"]
+variation_embolden = 0.7
+
+[node name="Instructions" type="Node2D"]
+script = ExtResource("1_w0orv")
+
+[node name="Background" type="Panel" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1149.0
+offset_bottom = 646.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qebxn")
+
+[node name="Sart Game" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 444.0
+offset_right = 660.0
+offset_bottom = 493.0
+theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
+theme_override_fonts/font = SubResource("FontVariation_f37s4")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_kot8c")
+text = "Menu
+"
+
+[node name="Title" type="Label" parent="Background"]
+offset_left = 354.0
+offset_top = 134.0
+offset_right = 985.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0.823529, 0.8, 0.796078, 1)
+theme_override_fonts/font = SubResource("FontVariation_lkydg")
+theme_override_font_sizes/font_size = 70
+text = "	Instructions"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 198.0
+offset_top = 234.0
+offset_right = 945.0
+offset_bottom = 395.0
+theme_override_colors/font_color = Color(0.823529, 0.8, 0.796078, 1)
+theme_override_font_sizes/font_size = 20
+text = "
+You are a robber with the goal of infiltrating an underwater museum
+and stealing treasures. Collect as many valuables as you can but be careful 
+not to get caught and make it out before time runs out!"
