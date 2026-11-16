@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj86wua8uh7rc"]
+[gd_scene format=3 uid="uid://cj86wua8uh7rc"]
 
 [ext_resource type="Script" uid="uid://dfyj3kr4fvr8d" path="res://menu_main.gd" id="1_plom5"]
-[ext_resource type="Texture2D" uid="uid://cdph3x7j0lss6" path="res://assets/backgrounds/menu_background.jpg" id="2_2ot7e"]
-[ext_resource type="AudioStream" uid="uid://ceo4codktur4o" path="res://assets/music/menu_background_music.mp3" id="3_2ot7e"]
+[ext_resource type="Texture2D" uid="uid://cfu8io5dplvgn" path="res://assets/backgrounds/menu_background.jpg" id="2_2ot7e"]
+[ext_resource type="AudioStream" uid="uid://2i333hgrlbck" path="res://assets/music/menu_background_music.mp3" id="3_2ot7e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kvs7"]
 texture = ExtResource("2_2ot7e")
@@ -36,17 +36,17 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 8
 
-[node name="menu_main" type="Node2D"]
+[node name="menu_main" type="Node2D" unique_id=72231430]
 script = ExtResource("1_plom5")
 
-[node name="Background" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="." unique_id=1619672596]
 offset_left = -2.0
 offset_top = -2.0
 offset_right = 1149.0
 offset_bottom = 646.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_6kvs7")
 
-[node name="Title" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="Background" unique_id=1638234146]
 layout_mode = 0
 offset_left = 248.0
 offset_top = 176.0
@@ -57,7 +57,7 @@ theme_override_fonts/font = SubResource("FontVariation_2ot7e")
 theme_override_font_sizes/font_size = 70
 text = "Underwater Heist!"
 
-[node name="credits" type="Label" parent="Background/Title"]
+[node name="credits" type="Label" parent="Background/Title" unique_id=297413501]
 layout_mode = 0
 offset_left = 254.0
 offset_top = 88.0
@@ -66,7 +66,7 @@ offset_bottom = 111.0
 theme_override_colors/font_color = Color(0.823529, 0.8, 0.796078, 1)
 text = "By Melissa & Bella"
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=18041116]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -83,7 +83,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 11
 
-[node name="Sart Game" type="Button" parent="Buttons"]
+[node name="Sart Game" type="Button" parent="Buttons" unique_id=637177928]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_cnlbs")
@@ -91,7 +91,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ja77e")
 text = "Start Game"
 
-[node name="Instructions" type="Button" parent="Buttons"]
+[node name="Instructions" type="Button" parent="Buttons" unique_id=1957381254]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_cnlbs")
@@ -100,7 +100,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ja77e")
 text = "Instructions
 "
 
-[node name="Exit" type="Button" parent="Buttons"]
+[node name="Exit" type="Button" parent="Buttons" unique_id=1091957545]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_u2d4o")
@@ -108,13 +108,21 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ja77e")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Credits" type="Button" parent="Buttons" unique_id=1959233164]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
+theme_override_fonts/font = SubResource("FontVariation_u2d4o")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ja77e")
+text = "Credits"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=556219404]
 stream = ExtResource("3_2ot7e")
-volume_db = -50.102
+volume_db = -12.0
 autoplay = true
 parameters/looping = true
 
-[node name="Music_Player" type="Button" parent="AudioStreamPlayer"]
+[node name="Music_Player" type="Button" parent="AudioStreamPlayer" unique_id=1794357446]
 offset_left = 49.0
 offset_top = 34.0
 offset_right = 230.0
@@ -128,4 +136,6 @@ text = "Stop Music"
 [connection signal="pressed" from="Buttons/Sart Game" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/Instructions" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="menu_music"]
+[connection signal="pressed" from="AudioStreamPlayer/Music_Player" to="." method="_on_music_player_pressed"]
