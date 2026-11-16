@@ -71,27 +71,25 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_nm7lk")
 
 [node name="back" type="Button" parent="." unique_id=415563800]
 layout_mode = 0
-offset_left = 419.0
-offset_top = 504.0
-offset_right = 729.4082
-offset_bottom = 569.0
+offset_left = 469.0
+offset_top = 582.0
+offset_right = 673.0
+offset_bottom = 631.0
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_t5rx0")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_nm7lk")
-text = "Back to Menu"
+text = "Go back
+"
 
 [node name="credits" type="RichTextLabel" parent="." unique_id=444627397]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 24.0
-offset_right = 1142.0
-offset_bottom = 531.0
+offset_left = 14.0
+offset_top = 39.0
+offset_right = 1141.0
+offset_bottom = 599.0
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "
-
-"
 horizontal_alignment = 1
 script = SubResource("GDScript_p2gul")
 

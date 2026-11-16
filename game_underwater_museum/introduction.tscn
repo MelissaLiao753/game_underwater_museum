@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckjuvup6u3vjj"]
+[gd_scene format=3 uid="uid://ckjuvup6u3vjj"]
 
-[ext_resource type="Texture2D" uid="uid://cdph3x7j0lss6" path="res://assets/backgrounds/menu_background.jpg" id="1_oqkmi"]
+[ext_resource type="Texture2D" uid="uid://cfu8io5dplvgn" path="res://assets/backgrounds/menu_background.jpg" id="1_oqkmi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qebxn"]
 texture = ExtResource("1_oqkmi")
@@ -17,23 +17,74 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 8
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_qebxn"]
+script/source = "extends RichTextLabel
 
-[node name="Background" type="Panel" parent="."]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://menu_main.tscn\")
+"
+
+[node name="Node2D" type="Node2D" unique_id=383553123]
+
+[node name="Background" type="Panel" parent="." unique_id=1942774753]
 offset_left = -2.0
 offset_top = -2.0
 offset_right = 1149.0
 offset_bottom = 646.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_qebxn")
 
-[node name="Sart Game" type="Button" parent="Background"]
-offset_left = 453.0
-offset_top = 448.0
-offset_right = 647.0
-offset_bottom = 497.0
+[node name="back" type="Button" parent="Background" unique_id=1171695449]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 563.0
+offset_right = 667.0
+offset_bottom = 612.0
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_f37s4")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_kot8c")
 text = "Go back
 "
+
+[node name="instructions" type="RichTextLabel" parent="Background" unique_id=385176736]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 39.0
+offset_right = 1141.0
+offset_bottom = 555.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Are you ready for an underwater heist?
+
+You are about to rob an underwater museum famous for its historical and magical artifacts. 
+But beware of the patrol guards, as they've hired more people because of 
+previous incidents.
+
+Main Objective:
+Steal all the objects on tables and leave the museum
+ without getting caught before the timer runs out. 
+
+Controls:
+Use WASD or arrow keys to move.
+Press \"e\" to steal.
+
+Goodluck! 
+
+
+"
+horizontal_alignment = 1
+script = SubResource("GDScript_qebxn")
+
+[connection signal="pressed" from="Background/back" to="Background/instructions" method="_on_back_pressed"]
+[connection signal="meta_clicked" from="Background/instructions" to="Background/instructions" method="_on_meta_clicked"]

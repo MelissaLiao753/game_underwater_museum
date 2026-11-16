@@ -83,7 +83,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 11
 
-[node name="Sart Game" type="Button" parent="Buttons" unique_id=637177928]
+[node name="Start Game" type="Button" parent="Buttons" unique_id=637177928]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0588235, 0.14902, 0.329412, 1)
 theme_override_fonts/font = SubResource("FontVariation_cnlbs")
@@ -133,8 +133,8 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_cnlbs")
 text = "Stop Music"
 
-[connection signal="pressed" from="Buttons/Sart Game" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Buttons/Instructions" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/Start Game" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="menu_music"]
