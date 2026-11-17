@@ -18,6 +18,12 @@ config/name="game_underwater_museum"
 run/main_scene="uid://cj86wua8uh7rc"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+boot_splash/autoload_on_startup=false
+boot_splash/default_bus_layout="res://default_bus_layout.tres"
+
+[autoload]
+
+menu_music="*uid://d4nedo7s74ic5"
 
 [rendering]
 

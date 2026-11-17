@@ -2,6 +2,30 @@
 
 [ext_resource type="Texture2D" uid="uid://cfu8io5dplvgn" path="res://assets/backgrounds/menu_background.jpg" id="1_oqkmi"]
 
+[sub_resource type="GDScript" id="GDScript_3h6ak"]
+script/source = "extends Node2D
+@onready var music_player: Button = $Music_Player
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_music_player_pressed() -> void:
+	if menu_music.playing:
+		music_player.text = \"Play Music\"
+		menu_music.stop()
+	else:
+		menu_music.play()
+		music_player.text = \"Stop Music\"
+"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qebxn"]
 texture = ExtResource("1_oqkmi")
 modulate_color = Color(0.843184, 0.843184, 0.843184, 1)
@@ -35,7 +59,19 @@ func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://menu_main.tscn\")
 "
 
-[node name="Node2D" type="Node2D" unique_id=383553123]
+[sub_resource type="FontVariation" id="FontVariation_oqkmi"]
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qebxn"]
+bg_color = Color(0.0588235, 0.14902, 0.329412, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+
+[node name="introduction" type="Node2D" unique_id=383553123]
+script = SubResource("GDScript_3h6ak")
 
 [node name="Background" type="Panel" parent="." unique_id=1942774753]
 offset_left = -2.0
@@ -86,5 +122,17 @@ Goodluck!
 horizontal_alignment = 1
 script = SubResource("GDScript_qebxn")
 
+[node name="Music_Player" type="Button" parent="." unique_id=2022188502]
+offset_left = 49.0
+offset_top = 34.0
+offset_right = 230.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.823529, 0.8, 0.796078, 1)
+theme_override_fonts/font = SubResource("FontVariation_oqkmi")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_qebxn")
+text = "Stop Music"
+
 [connection signal="pressed" from="Background/back" to="Background/instructions" method="_on_back_pressed"]
 [connection signal="meta_clicked" from="Background/instructions" to="Background/instructions" method="_on_meta_clicked"]
+[connection signal="pressed" from="Music_Player" to="." method="_on_music_player_pressed"]

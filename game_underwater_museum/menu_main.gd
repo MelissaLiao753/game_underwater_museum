@@ -1,7 +1,9 @@
 extends Node2D
-@onready var music_player: Button = $AudioStreamPlayer/Music_Player
+@onready var music_player: Button = $Music_Player
+
 
 func _on_start_pressed() -> void:
+	menu_music.stop()
 	get_tree().change_scene_to_file("res://level.tscn")
 
 func _on_credits_pressed() -> void:
@@ -23,9 +25,9 @@ func _on_AudioStreamPlayer_finished():
 
 
 func _on_music_player_pressed() -> void:
-	if $AudioStreamPlayer.playing:
+	if menu_music.playing:
 		music_player.text = "Play Music"
-		$AudioStreamPlayer.stop()
+		menu_music.stop()
 	else:
-		$AudioStreamPlayer.play()
+		menu_music.play()
 		music_player.text = "Stop Music"

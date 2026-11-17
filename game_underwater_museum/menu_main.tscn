@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dfyj3kr4fvr8d" path="res://menu_main.gd" id="1_plom5"]
 [ext_resource type="Texture2D" uid="uid://cfu8io5dplvgn" path="res://assets/backgrounds/menu_background.jpg" id="2_2ot7e"]
-[ext_resource type="AudioStream" uid="uid://2i333hgrlbck" path="res://assets/music/menu_background_music.mp3" id="3_2ot7e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6kvs7"]
 texture = ExtResource("2_2ot7e")
@@ -116,13 +115,7 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_ja77e")
 text = "Credits"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=556219404]
-stream = ExtResource("3_2ot7e")
-volume_db = -12.0
-autoplay = true
-parameters/looping = true
-
-[node name="Music_Player" type="Button" parent="AudioStreamPlayer" unique_id=1794357446]
+[node name="Music_Player" type="Button" parent="." unique_id=1794357446]
 offset_left = 49.0
 offset_top = 34.0
 offset_right = 230.0
@@ -137,5 +130,4 @@ text = "Stop Music"
 [connection signal="pressed" from="Buttons/Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="menu_music"]
-[connection signal="pressed" from="AudioStreamPlayer/Music_Player" to="." method="_on_music_player_pressed"]
+[connection signal="pressed" from="Music_Player" to="." method="_on_music_player_pressed"]
