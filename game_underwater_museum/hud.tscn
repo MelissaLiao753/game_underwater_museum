@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7c8gtk6ilriw"]
 
-[ext_resource type="Texture2D" uid="uid://cl4ntg2m5g6dq" path="res://assets/UI/kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large_m.svg" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://veu878q2vjpg" path="res://assets/UI/kenney_ui-pack-space-expansion/PNG/Blue/Default/bar_round_gloss_large.png" id="1_37p78"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n2snw"]
 texture = ExtResource("1_37p78")
