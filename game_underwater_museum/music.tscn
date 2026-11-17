@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4nedo7s74ic5"]
+
+[ext_resource type="AudioStream" uid="uid://2i333hgrlbck" path="res://assets/music/menu_background_music.mp3" id="1_3h6ak"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1955652009]
+stream = ExtResource("1_3h6ak")
+volume_db = -12.0
+autoplay = true
+parameters/looping = true
